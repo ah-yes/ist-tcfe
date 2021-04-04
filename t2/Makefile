@@ -8,7 +8,7 @@ all: data
 	make -C mat
 	make -C sim
 	make -C doc
-	cp doc/report.pdf
+	cp doc/report.pdf ./
 
 
 data:
