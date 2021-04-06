@@ -38,38 +38,63 @@ The results that were obtained are shown bellow
 Using the results listed above, we then simulated the natural response of the circuit, imposing that the initial voltage at node 6 be equal to what we obtained beforehand. To accomplish it, we set the independent voltage source to $0V$ and ,as was expected, the capacitor discharged, following a negative exponential model, as is shown 
 
 %%%%%INCLUDE BONECO DA SOLUÇÃO NATURAL
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/3/trans.pdf}
-\caption{Natural solution for $t > 0$ s}
-\label{fig:Natural solution}
-\end{figure}
+
 
 We then, repeated the same process but this time for the general solution, consisting on the natural and the forced solutions, with the same initial conditions as before. We expected to observe a sinusoidal signal of the same frequency of the applied tension, supper imposed with the previous exponential solution, which as we can see was obtained 
 
 
 %%%%%INCLUDE BONECO DA SOLUÇÃO GERAL
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/4/trans.pdf}
-\caption{Full solution for $t > 0$ s}
-\label{fig:Full solution}
+
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/3/trans.pdf}
+\caption{Natural Soltion}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/4/trans.pdf}
+\caption{Full solution}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+ 
+        \caption{Solutions obtained from NgSpice}
+        \label{fig:three graphs}
 \end{figure}
+
+
 
 At last, we simulated the systems response to several different driving frequencies ranging from 0.1Hz to 1MHz, and the resultant magnitude and phase of the ensuing voltages ($V_6,V_S,V_C$) where plotted, the first the magnitude was expressed in decibels, the second in degrees, and in both cases the x scale is logarithmic. The graphs obtained follow
 
 
 %%%%%INCLUDE BONECO DA FASE E ÂNGULO
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/5/acm.pdf}
-\caption{Circuit's amplitude response}
-\label{fig:Amp response}
-\end{figure}
 
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/5/freq.pdf}
-\caption{Circuit's phase response}
-\label{fig:Phase response}
-\end{figure}
 
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/5/acm.pdf}
+\caption{Signal Magnitude}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/5/freq.pdf}
+\caption{Phase}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+ 
+        \caption{Transfer Functions}
+        \label{fig:three graphs}
+\end{figure}
 
 
 

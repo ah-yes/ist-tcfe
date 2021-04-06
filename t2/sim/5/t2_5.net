@@ -60,7 +60,7 @@ ac dec 10 0.1 1MEG
 hardcopy acm.ps db(v(6))  db(v(1)) db(v(6)-v(8))
 echo acm_FIG
 
-hardcopy freq.ps vp(6)*180/pi vp(1)*180/pi
+hardcopy freq.ps vp(6)*180/pi vp(1)*180/pi 
 echo freq_FIG
 
 *plot db(v(coll))

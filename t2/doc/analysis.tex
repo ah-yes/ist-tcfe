@@ -42,7 +42,7 @@ V_s\\
 
 %resultados
 
-\begin{table}[h!]
+\begin{table}[htbp!]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
@@ -55,7 +55,7 @@ V_s\\
 \end{table}
 
 
-We then determined the equivalent resistance $R_{eq}$ as seen from the capacitor terminals. This is achieved by making $V_s=0$ and replacing the capacitor by a voltage source $V_x=V(6)-V(8)$, where $V(6)$ and $V(8)$ are the previously obtained voltages on node 6 and node 8, respectively. Then, we ran nodal analysis to determine the current $I_x$ supplied by the voltage source $V_x$. This way, it was possible to compute $R_eq= \frac{V_x}{I_x}$. (explicar porque é que é possível fazer isso) We obtained the following results:
+We then determined the equivalent resistance $R_{eq}$ as seen from the capacitor terminals. This is achieved by making $V_s=0$ and replacing the capacitor by a voltage source $V_x=V(6)-V(8)$, where $V(6)$ and $V(8)$ are the previously obtained voltages on node 6 and node 8, respectively. Then, we ran nodal analysis to determine the current $I_x$ supplied by the voltage source $V_x$. This way, it was possible to compute $R_eq= \frac{V_x}{I_x}$. It was possible to carry out this calculations, because of Thévenis theorem, which states that any circuit maybe broken down into 2 sub-circuits, one of them containing part of the original circuit and the other contains only an equivalent voltage source and a resistence. We obtained the following results:
 
 %equações etc%
 
@@ -95,7 +95,7 @@ V_x\\
 \end{equation}
 
 %tabela
-\begin{table}[h!]
+\begin{table}[htbp!]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
@@ -117,17 +117,13 @@ With these results, we determined the equivalent differential equation for $v_{6
 \input{../mat/NaturalSol.tex}
 
 %plot 
-\begin{figure}[h!] \centering
-\includegraphics[width=0.6\linewidth]{../mat/natural.pdf}
-\caption{Natural solution}
-\label{fig:TNatural}
-\end{figure}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%FORÇADO 
 The next step to obtain the full solution for $v_6(t)$ is to obtain the forced solution $v_{6f}(t)$, in that same time interval. With that objective in mind, we started by replacing the capacitor for its equivalent impedance $Z_c=\frac{1}{j\,\omega \, C}$ That way, we can obtain equations that are similar to (fazer referência às primeiras equações da análise), by again running a nodal analysis of the circuit. By making $V_s=0$, and solving this system of equations, we obtain phasor voltages for all the nodes. In this case, $f=1$ kHz.
 
-%resultados, eqauções, whatever the fuck
+%resultados, eqauções
 %equação matricial 
 \begin{equation}
 \begin{pmatrix}
@@ -164,7 +160,7 @@ V_s\\
 \end{equation}
 
 %%PHASOR TABLE
-\begin{table}[h!]
+\begin{table}[htbp!]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
@@ -172,7 +168,7 @@ V_s\\
     \input{../mat/tableF1.tex}
     \hline
   \end{tabular}
-  \caption{Nodal analysis resutls for $t < 0$s and $V_s = 0$V }
+  \caption{Nodal analysis resutls for $t > 0$s of the phasors magnitude }
   \label{tab:Nodal2}
 \end{table}
 
@@ -184,11 +180,7 @@ To finally obtain the forced solution $v_{6f}(t)$, we converted the phasors to r
 \input{../mat/ForcedSolP.tex}
 
 %plot 
-\begin{figure}[h!] \centering
-\includegraphics[width=0.6\linewidth]{../mat/forced_1.pdf}
-\caption{Forced solution $t > 0$s}
-\label{fig:TForcedP}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%TOTAL SOLUTION 	
 
@@ -197,10 +189,30 @@ The total solution $v_6(t)$ is computed by summing the two solutions obtained be
 \input{../mat/FullSolutionP.tex}
 
 %plots
-\begin{figure}[h!] \centering
-\includegraphics[width=0.6\linewidth]{../mat/fullSolution.pdf}
-\caption{Forced solution $t > 0$s}
-\label{fig:TForcedP}
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.32\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../mat/natural.png}
+         \caption{Natural Solution}
+         \label{fig:y equals x}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.32\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../mat/forced_1.png}
+         \caption{Forced Solution}
+         \label{fig:three sin x}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.32\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../mat/fullSolution.png}
+         \caption{Full solution}
+         \label{fig:five over x}
+     \end{subfigure}
+        \caption{Solutions obtained in Octave}
+        \label{fig:three graphs}
 \end{figure}
 
 
@@ -208,19 +220,30 @@ The total solution $v_6(t)$ is computed by summing the two solutions obtained be
 %figuras bonitas 
 We finally explored the frequency responses (transfer function) $v_c(f)= v_6(f)-v_8(f)$ to the frequency $f$ of the voltage source. 
 \input{../mat/Transfer.tex}
-The following plots were obtained:
 
-\begin{figure}[h!] \centering
-\includegraphics[width=0.6\linewidth]{../mat/TransAbs.pdf}
-\caption{Forced solution $t > 0$s}
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/TransPha.png}
+\caption{Phase}
 \label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/TransAbs.png}
+\caption{Signal Magnitude}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+ 
+        \caption{Transfer Functions}
+        \label{fig:three graphs}
 \end{figure}
 
-\begin{figure}[h!] \centering
-\includegraphics[width=0.6\linewidth]{../mat/TransPha.pdf}
-\caption{Forced solution $t > 0$s}
-\label{fig:TForcedP}
-\end{figure}
+
 
 \newpage
 

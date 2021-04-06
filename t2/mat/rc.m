@@ -94,7 +94,7 @@ axis([0 20 0 9])
 xlabel("time (ms)");
 ylabel("Voltage (V)");
 title("V*exp(-t/(Req*C))");
-print (hf, "natural.pdf");
+print (hf, "natural.png");
 %Writting natural solution to .tex file
 fileID5 = fopen("NaturalSol.tex", "w");
 chr = latex(vn)
@@ -147,7 +147,7 @@ axis([0 20 -1 1])
 xlabel("time (ms)");
 ylabel("Voltage (V)");
 title("Forced solution V6");
-print (hf, "forced_1.pdf");
+print (hf, "forced_1.png");
 
 printf("Full solution -5 < t < 20 ms\n");
 %not using symbolic pkg
@@ -170,7 +170,7 @@ yS = sin(2*pi*x);
 plot(x, yT, 'b')
 hold on
 plot(x, yS, 'g')
-print (hf, "fullSolution.pdf");
+print (hf, "fullSolution.png");
 
 %Writting full solutuion for t > 0 in .tex file
 fileID7 = fopen("FullSolutionP.tex", "w")
@@ -238,7 +238,7 @@ legend("abs(T(V6))", "abs(T(V6-V8))", "abs(T(vs))")
 xlabel("kHz")
 ylabel("V")
 grid on
-print (hf, "TransAbs.pdf");
+print (hf, "TransAbs.png");
 
 %Phase (deg) plots
 hf = figure()
@@ -255,4 +255,4 @@ legend("arg(T(V6))", "arg(T(V6-V8))", "arg(T(vs))")
 xlabel("kHz")
 ylabel("degrees")
 grid on
-print (hf, "TransPha.pdf");
+print (hf, "TransPha.png");
