@@ -1,0 +1,103 @@
+\section{Simulation Analysis}
+
+Using the ngspice program, we began by analysing the circuit for $t<0$, the currents and voltages at each node are summarized in the table below.
+
+%%%%%INCLUDE TABLE 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/1/op_tab.tex}
+  \end{tabular}
+  \caption{Operating point. A variable preceded by @ is of type {\em current}
+    and expressed in mA; other variables are of type {\it voltage} and expressed in
+    Volt.}
+  \label{tab:op1}
+\end{table}
+
+Then we proceeded to calculate the tensions $V_6$ and $V_8$, for time $t=0s$, with an applied tension of $0V$, and where the capacitor was substituted by a independent voltage source which imposes a voltage equal to $V_6-V_8$. This is indeed, necessary to establish the boundary conditions for the system, for $t>0s$, since in the instant $t=0s$ the applied tension is $0v$, thus by performing the operating point analyses for the conditions described above, the initial values of the aforementioned tensions may be obtained. The capacitor is replaced by a voltage source because at that instant for our purposes the tension at each of its terminals is constant since we are holding time still.
+The results that were obtained are shown bellow
+
+
+%%%%%INCLUDE TABLE 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/2/op_tab.tex}
+  \end{tabular}
+  \caption{Operating point for $V_s = 0$V and  $t = 0$s. A variable preceded by @ is of type {\em current}
+    and expressed in mA; other variables are of type {\it voltage} and expressed in
+    Volt.}
+  \label{tab:op1}
+\end{table}
+
+
+Using the results listed above, we then simulated the natural response of the circuit, imposing that the initial voltage at node 6 be equal to what we obtained beforehand. To accomplish it, we set the independent voltage source to $0V$ and ,as was expected, the capacitor discharged, following a negative exponential model, as is shown 
+
+%%%%%INCLUDE BONECO DA SOLUÇÃO NATURAL
+
+
+We then, repeated the same process but this time for the general solution, consisting on the natural and the forced solutions, with the same initial conditions as before. We expected to observe a sinusoidal signal of the same frequency of the applied tension, supper imposed with the previous exponential solution, which as we can see was obtained 
+
+
+%%%%%INCLUDE BONECO DA SOLUÇÃO GERAL
+
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/3/trans.pdf}
+\caption{Natural Soltion}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/4/trans.pdf}
+\caption{Full solution}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+ 
+        \caption{Solutions obtained from NgSpice}
+        \label{fig:three graphs}
+\end{figure}
+
+
+
+At last, we simulated the systems response to several different driving frequencies ranging from 0.1Hz to 1MHz, and the resultant magnitude and phase of the ensuing voltages ($V_6,V_S,V_C$) where plotted, the first the magnitude was expressed in decibels, the second in degrees, and in both cases the x scale is logarithmic. The graphs obtained follow
+
+
+%%%%%INCLUDE BONECO DA FASE E ÂNGULO
+
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/5/acm.pdf}
+\caption{Signal Magnitude}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/5/freq.pdf}
+\caption{Phase}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+ 
+        \caption{Transfer Functions}
+        \label{fig:three graphs}
+\end{figure}
+
+
+
+
+
+

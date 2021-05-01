@@ -1,0 +1,4 @@
+To compile the report:
+make PARAMS='<student number>'
+to clean
+make clean
