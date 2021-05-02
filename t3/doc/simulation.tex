@@ -1,103 +1,84 @@
 \section{Simulation Analysis}
 
-Using the ngspice program, we began by analysing the circuit for $t<0$, the currents and voltages at each node are summarized in the table below.
+Using \textit{ngspice}, we began by analysing the circuit having obtained the following results for the voltage at the terminals of the envelope detector
 
-%%%%%INCLUDE TABLE 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|l|r|}
-    \hline    
-    {\bf Name} & {\bf Value [A or V]} \\ \hline
-    \input{../sim/1/op_tab.tex}
-  \end{tabular}
-  \caption{Operating point. A variable preceded by @ is of type {\em current}
-    and expressed in mA; other variables are of type {\it voltage} and expressed in
-    Volt.}
-  \label{tab:op1}
-\end{table}
-
-Then we proceeded to calculate the tensions $V_6$ and $V_8$, for time $t=0s$, with an applied tension of $0V$, and where the capacitor was substituted by a independent voltage source which imposes a voltage equal to $V_6-V_8$. This is indeed, necessary to establish the boundary conditions for the system, for $t>0s$, since in the instant $t=0s$ the applied tension is $0v$, thus by performing the operating point analyses for the conditions described above, the initial values of the aforementioned tensions may be obtained. The capacitor is replaced by a voltage source because at that instant for our purposes the tension at each of its terminals is constant since we are holding time still.
-The results that were obtained are shown bellow
-
-
-%%%%%INCLUDE TABLE 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|l|r|}
-    \hline    
-    {\bf Name} & {\bf Value [A or V]} \\ \hline
-    \input{../sim/2/op_tab.tex}
-  \end{tabular}
-  \caption{Operating point for $V_s = 0$V and  $t = 0$s. A variable preceded by @ is of type {\em current}
-    and expressed in mA; other variables are of type {\it voltage} and expressed in
-    Volt.}
-  \label{tab:op1}
-\end{table}
-
-
-Using the results listed above, we then simulated the natural response of the circuit, imposing that the initial voltage at node 6 be equal to what we obtained beforehand. To accomplish it, we set the independent voltage source to $0V$ and ,as was expected, the capacitor discharged, following a negative exponential model, as is shown 
-
-%%%%%INCLUDE BONECO DA SOLUÇÃO NATURAL
-
-
-We then, repeated the same process but this time for the general solution, consisting on the natural and the forced solutions, with the same initial conditions as before. We expected to observe a sinusoidal signal of the same frequency of the applied tension, supper imposed with the previous exponential solution, which as we can see was obtained 
-
-
-%%%%%INCLUDE BONECO DA SOLUÇÃO GERAL
-
-
-\begin{figure}
+\begin{figure}[htb!]
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-\includegraphics[width=\textwidth]{../sim/3/trans.pdf}
-\caption{Natural Soltion}
+\includegraphics[width=\textwidth]{../sim/trans2.pdf}
+\caption{Capacitor Voltage - Vertical axis in kV - \textit{ngspice}.}
 \label{fig:TForcedP}
      \end{subfigure}
      \hfill
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-\includegraphics[width=\textwidth]{../sim/4/trans.pdf}
-\caption{Full solution}
+\includegraphics[width=\textwidth]{../mat/venvlope.png}
+\caption{Capacitor Voltage - Veritcal axis in V - \textit{Octave}}
 \label{fig:TForcedP}
      \end{subfigure}
      \hfill
- 
-        \caption{Solutions obtained from NgSpice}
-        \label{fig:three graphs}
+     \caption{Envelope circuit output}
+     \label{fig: graphsEnv}
 \end{figure}
 
 
+At this point the voltage is already semi-stable, having a small ripple effect, which was corrected with the voltage regulator circuit. It should also be noted that, while the overall shape and frequecy of oscilation is the same, there is a significant difference in the amplitude of the signal which radicates from the ideal diode approximation used in the theoretical analysis.
 
-At last, we simulated the systems response to several different driving frequencies ranging from 0.1Hz to 1MHz, and the resultant magnitude and phase of the ensuing voltages ($V_6,V_S,V_C$) where plotted, the first the magnitude was expressed in decibels, the second in degrees, and in both cases the x scale is logarithmic. The graphs obtained follow
-
-
-%%%%%INCLUDE BONECO DA FASE E ÂNGULO
-
-
-\begin{figure}
+\begin{figure}[htb!]
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-\includegraphics[width=\textwidth]{../sim/5/acm.pdf}
-\caption{Signal Magnitude}
+\includegraphics[width=\textwidth]{../sim/trans.pdf}
+\caption{Output Voltage - Vertical axis in V - \textit{ngspice}.}
 \label{fig:TForcedP}
      \end{subfigure}
      \hfill
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-\includegraphics[width=\textwidth]{../sim/5/freq.pdf}
-\caption{Phase}
+\includegraphics[width=\textwidth]{../mat/OutputV.png}
+\caption{Output Voltage - Veritcal axis in V - \textit{Octave}}
 \label{fig:TForcedP}
      \end{subfigure}
      \hfill
- 
-        \caption{Transfer Functions}
-        \label{fig:three graphs}
+     \caption{Circuit output}
+     \label{fig: graphsEnv}
 \end{figure}
 
 
+The output voltage is much more stable, having a signal with far less amplitude. Moreover, the diodes also diminish the overall value of the voltage, lowering the average to approximatly the desired value of 12V.
+
+\begin{figure}[htb!]
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../sim/trans4.pdf}
+\caption{Output Voltage-12V - Vertical axis in mV - \textit{ngspice}.}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/Level.png}
+\caption{Output Voltage-12V - Veritcal axis in V - \textit{Octave}}
+\label{fig:TForcedP}
+     \end{subfigure}
+     \hfill
+     \caption{Output voltage-12V}
+     \label{fig: graphsEnv}
+\end{figure}
 
 
+Once again, there are obvious differences from the theoretical analysis: the predicted voltage is much closer to 11V and the amplitude of the oscilation approximatly halved compared to their \textit{ngspice} counterparts. Nontheless, this divergence can be inputed to \textit{ngspice's} much more complex diode model and to the theoretical approximations made in the envelope detector analysis.
+Therefore, we chose to calculated the Merit figure for the transformer using the simulation results, having thus obtained
 
 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline
+    \input{../sim/op_tab.tex}
+  \end{tabular}
+  \caption{Output voltage DC-Level and Ripple (Maximum - Minimum)}
+  \label{tab:op1}
+\end{table}

@@ -4,15 +4,11 @@
 # type "make clean" to delete all generated files
 # ------------------------------------------------------------
 
-all: data
+all:
 	make -C mat
 	make -C sim
 	make -C doc
 	cp doc/report.pdf ./
-
-
-data:
-	./t2_datagen.py ${PARAMS} > mat/data.txt
 
 clean:
 	make -C mat clean

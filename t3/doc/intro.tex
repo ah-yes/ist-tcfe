@@ -2,7 +2,7 @@
 \label{sec:introduction}
 
 % state the learning objective
-In this assignment, we present and analysis a possible desing of an AC/DC voltage converter, with a desired output voltage of 12V and an input of a sinusodal signal with an amplitude of 220V and a frequency of 50Hz. Thus, we used an envelope circuit composed of an ideal  transformer and full wave bridge rectifier in series with a parralel association of a capacitor and a resistor, followed by a voltage regulator encompassing 6 diodes and another resistor. The output voltage was mesured at the terminals of the diode association.
+In this assignment, we present and analyse a possible design of an AC/DC voltage converter, with a desired output voltage of 12V and an input of a sinusodal signal with an amplitude of 220V and a frequency of 50Hz. Thus, we used an envelope circuit composed of an ideal  transformer and full wave bridge rectifier in series with a parallel association of a capacitor and a resistor, followed by a voltage regulator encompassing 13 diodes and another resistor. The output voltage was mesured at the terminals of the diode association.
 Furthermore, a cost/effectiveness analysis was also done, with set prices for the diodes (0.1 monetary unit per diode), resistors (1 monetary unit per kOhm) and capacitors(1 monetary unit per micro-Farad).
 
 \begin{figure}[h] \centering
@@ -11,4 +11,6 @@ Furthermore, a cost/effectiveness analysis was also done, with set prices for th
 \label{fig:rc}
 \end{figure}
 
-We then began by analysing the circuit by means of simulation with \textit{ngspice} and a theoretical approach using \textit{Octave}. Afterwards the results from both methods were compared followed by a discussion on the efficacy of the AC/DC transformer.
+We set $R_{\beta} = 10 k\omega$ \, $R_{\phi} = 19 k\omega$ and $C = 10\mu F$\, together withe 17 diodes fulfilling a total cost of 40.7 MU.
+
+We then began by analysing the circuit by means of simulation with \textit{ngspice} and a theoretical approach using \textit{Octave}. Afterwards the results from both methods were compared followed by a discussion of the efficacy of the AC/DC transformer.

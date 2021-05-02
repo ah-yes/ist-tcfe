@@ -12,12 +12,12 @@ I_S = 1e-14;
 V_T=25e-3;
 
 %sinusoidal signal + stuff
-A = 230;
+A = 230*2766.4;
 f=50;
 w=2*pi*f;
-R=50e3;
+R=10e3;
 C=10e-6;
-R2 = 10e3;
+R2 = 19e3;
 vS = A * cos(w*t);
 vOhr = zeros(1, length(t));
 vO = zeros(1, length(t));
@@ -65,13 +65,13 @@ print (hf, "VEnvRec.png");
 
 
 %Computing incremental resistence with op at 228 V
-rd = 2*V_T/(I_S*exp(228/(V_T)));
+rd = 13*V_T/(I_S*exp(228/(V_T)));
 
 Vout = zeros(1, length(t));
 Vout2 = zeros(1, length(t));
 
 for i =1:length(t)
-  Vout(i) = fsolve(@(v) vO(i) - v - R2*I_S*(exp(v/(V_T*6)) - 1), 3);
+  Vout(i) = fsolve(@(v) vO(i) - v - R2*I_S*(exp(v/(V_T*13)) - 1), 3);
   %fun = vO(i) - v - R2*I_S*(exp(v/V_T/2) - 1)
 endfor
 
@@ -87,7 +87,7 @@ hf = figure()
 plot(t*1000, Vout);
 hold on
 plot(t*1000,vO);
-title("Regulator circuit output with 3 diodes ");
+title("Regulator circuit output with 13 diodes ");
 xlabel("t(ms)");
 ylabel("Output voltage (V)");
 legend("Output", "Envelope");
@@ -117,6 +117,6 @@ disp("\n DC Level: "), disp(DCLevel);
 
 %Writting DC level and ripple to file
 fileID = fopen("Results.tex", 'w');
-fprintf(fileID, "$$ ripple = %f V$$ \\n", ripple);
-fprintf(fileID, "$$ ripple improvement = %f %%$$ \\n", improvement);
-fprintf(fileID, "$$ DC level = %f V $$ \\n", DCLevel);
+fprintf(fileID, "$$ ripple = %f V$$ \n", ripple);
+fprintf(fileID, "$$ ripple \\, improvement = %f \\%% $$ \n", improvement);
+fprintf(fileID, "$$ DC level = %f V $$ \n", DCLevel);

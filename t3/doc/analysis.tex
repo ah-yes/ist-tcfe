@@ -4,9 +4,9 @@
 %Adding Resistance and capacitor values
 
 The envelope circuit is composed of a full wave bridge rectifier and a parallel association of a capacitor and a resistance, as shown before.
-Making use of the ideal diode model we aproximated the voltage at the terminals of the capacitor as $|V_S|$. Therefore the current flowing through the capacitor is negative and increasing in modulus thus at a given instant it matches the current flowing through the resistance and the diode is turned off. The instant at which this occurs, t_{off} can be calculated with
+Making use of the ideal diode model we aproximated the voltage at the terminals of the capacitor as $|V_S|$. Therefore the current flowing through the capacitor is negative and increasing in modulus thus at a given instant it matches the current flowing through the resistance and the diode is turned off. The instant at which this occurs, $t_{off}$ can be calculated with
 
-\begin {equation}
+\begin{equation}
 t_{off} = \frac{arctan{\frac{1}{\omega R C}}}{\omega}
 \label{eq:toff}
 \end{equation}
@@ -14,7 +14,7 @@ t_{off} = \frac{arctan{\frac{1}{\omega R C}}}{\omega}
 Afterwards, the circuit becomes a simple RC circuit
 
 \begin{equation}
-V_C = A*\cos{\omega*t_{off}}e^{\frac{t-t_{off}}{R_{\beta}C}}
+V_C = A\cos{\omega t_{off}}e^{\frac{t-t_{off}}{R_{\beta}C}}
 \end{equation}
 
 At a given instant $t_{on}$ the rectified source voltage will match the capacitor voltage and the diode will turn on again. At this point the advantage of using a full wave rectifier becomes evident. Because we take the absolute value of the source voltage $t_{on}$ is about half a period earlier than it would be had an half wave bridge rectifier been used.
@@ -24,7 +24,7 @@ Thus we obtained the following plots
      \centering
      \begin{subfigure}[b]{0.45\textwidth}
          \centering
-\includegraphics[width=\textwidth]{../mat/venvelope.png}
+\includegraphics[width=\textwidth]{../mat/venvlope.png}
 \label{fig:venvelope}
      \end{subfigure}
      \hfill
@@ -39,33 +39,30 @@ Thus we obtained the following plots
 \end{figure}
 
 It is to be noted that the oscillations of the output voltage occur with twice the frequency of the input signal, hence diminishing the ripple effect.
-\par
 
 For the voltage regulator circuit we used the diode equation,
+
 \begin{equation}
-
-I = I_s\bigg(e^{\frac{V}{\eta V_T}} - 1\bigg)
-
+I = I_{s}\bigg(e^{\frac{V}{\eta V_T}} - 1\bigg)
 \label{eq:diode}
 \end{equation}
 
 where
 
 \begin{align*}
-I_s &= 10^{-14} A
-V_T &= 25\times 10^{-3} V
-\eta &= 1
+I_s &= 10^{-14} A\\
+V_T &= 25\times 10^{-3} V\\
+\eta &= 1\\
 \end{align*}
 in agreement with \textit{ngspice} default diode model used afterwards.
 
 Applying KVL to this circuit yields
 
 \begin{equation}
-
-V_C - R_{\phi}I_s\bigg(e^{\frac{V_{out}}{6\eta V_T}} - 1\bigg) - V_{out} = 0
-
+V_{C} - R_{\phi}I_s\bigg(e^{\frac{V_{out}}{13\eta V_T}} - 1\bigg) - V_{out} = 0
 \label{eq:KVL}
 \end{equation}
+
 where $V_{out}$ is the voltage at the terminals of the diode association
 This equation was solved point by point, using \textit{Octave} method for solving non-linear equations\footnote{https://octave.sourceforge.io/octave/function/fsolve.html}, whence obtaining the following plots
 
@@ -88,12 +85,10 @@ This equation was solved point by point, using \textit{Octave} method for solvin
 \end{figure}
 
 It can be observed that the final output signal has kept the same shape has the output from the envelope although the amplitude of the signal has been largely attenuated as has the ripple effect.
-The ripple as been calculated as
+The ripple can been calculated as
 
 \begin{equation}
-
 ripple = max(V_{out}) - min(V_{out})
-
 \label{eq:ripple}
 \end{equation}
 
@@ -108,9 +103,7 @@ improvement = \frac{ripple(Regulator)}{ripple(Envelope)\times 100}
 We obtained
 \input{../mat/Results.tex}
 
-Lastly, we ploted $V_{out} - 12V$
-
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
         \includegraphics[width = 0.7\columnwidth]{../mat/Level.png}
     \label{fig:Level}
