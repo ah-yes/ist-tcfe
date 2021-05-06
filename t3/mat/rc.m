@@ -63,7 +63,6 @@ print (hf, "VEnvRec.png");
 
 %Regulator circuit
 
-
 %Computing incremental resistence with op at 228 V
 rd = 13*V_T/(I_S*exp(228/(V_T)));
 
@@ -112,7 +111,7 @@ improvement = 100*(ripple/ripple2);
 
 
 disp("\n Ripple at the envelope circuit"), disp(ripple2), disp("\n Ripple at the regulator circuit"), disp(ripple);
-disp("\n Ripple effect diminuished in (%)"), disp(100*(ripple/ripple2))
+disp("\n Ripple effect diminuished in (%)"), disp(100*(ripple2/ripple))
 disp("\n DC Level: "), disp(DCLevel);
 
 %Writting DC level and ripple to file
