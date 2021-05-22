@@ -1,0 +1,128 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+
+We began by analysing the two subcircuits seperatly.
+Firstly the common emmiter. For the operating point, the coupling capacitor, in good aproximation, fully blocks the DC component of the $V_s$, hence the voltage comes from $V_{CC}$ alone. Thus, we can define $V_{EQ} = \frac{R_{B2}}{R_{B1} + R_{B_2}}V_{CC}$, as well as an equivalent resistence $R_B = R_{B1} \parallel R_{B2}$. By applying KVL one obtains,
+
+\begin{align*}
+VO &= V_{CC} - R_CI_C\\
+Veq &+ R_BI_B + V_{BE} + R_EI_E = 0
+\end{align*}
+
+We approximate $V_{BE} = V_{BEON}$ and $I_E = (1+\beta)I_B$, solving the systems one obtains
+
+ %%%%Insert output for op from octave
+ \input{../mat/Results1.tex}
+
+For the incremental analysis of this sub-circuit we started with the model presented in lectures (L16, L17 and hand calculations), having substituted $R_E$ with a with a parallel association of an actual resistor $R_E$ and a capacitor $C_b$ with impedence $Z_E$. This capacitor, for high enough frequencies, acts as shunt bypassing $R_E$\footnote{$R_E$ main function is to stabilize the temperature}, and improving the gain. With this change the equations for gain, input and output impedence becomes
+
+\begin{align*}
+A_1 &= R_C \frac{Z_E -g_mr_pir_o}{(r_o + R_C + Z_E)(R_B + R_\pi + Z_E) + g_mZ_Er_or_\pi - Z_E^2}\\
+Z_{i1} &= R_B \parallel r_pi \\
+Z_{o1} &= r_o \parallel R_c
+\end{align*}
+
+Naturally, the third equation was obtained for the limit when $Z_E = 0$. If we were to consider $Z_E$ the expression would become
+
+\begin{equation*}
+Z_{o1} = r_C \parallel\frac{ro\big((R_B + R_\pi)\parallel Z_E)\big)}{r_o \parallel r_pi + R_B\parallel Z_E \parallel \frac{r_\pi + R_B}{g_mr_\pi}}
+\end{equation*}
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/InZ1.png}
+        \caption{Input impedence of gain phase}
+\label{fig:venvelope}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/OutZ1.png}
+\label{fig:EnvRec}
+\caption{Output impedence of gain phase}
+     \end{subfigure}
+     \hfill
+        \label{fig:EnvelopeOut}
+\end{figure}
+
+As one can see, the input increceases as the frequency lowers, which means the coupling capacitor is fulfilling its purpose, and eventually stabilizes at around 251.1 $\Omega$. As for the ouput impedence, excepet for the peak at low frequencies (10k Hz), it is approximatly constant. The low values before the peak are a consequence of the the parallel of the capacitor with the emiter resistence wich will eventually behave as a shunt for low enough frequencies. 
+
+
+
+For the sub-circuit with the pnp transistor we proceeded analogously, having once again subsituted the emiter resistence with a parallel of a resistence and a capacitor (which, once again blocks the DC component of the output signal), with admitance $G_{E2}$
+
+For the operating point
+\begin{align*}
+VO &= V_{CC} - R_EI_E\\
+VO &= V_I + V_{EBON}
+\end{align*}
+
+where $V_I$ is the voltage at the oupt of the first sub-circuit\footnote{It should be noted, the parameters which characterize the transistor differ from the pnp to the npn transistor, and the $g_m \, ,r_\pi \, ,r_o$ regard the pnp transistor}. Having thus obtained,
+
+
+ \input{../mat/Results2.tex}
+
+
+
+for the incremental analysis,
+
+\begin{align*}
+A_2 = \frac{g_m}{g_\pi + G_{E2} + g_o + g_m}
+Z_{i2} = \frac{g_\pi + G_{E2} + g_o + g_m}{g_\pi(g_\pi + G_{E2} + g_o)}
+Z_{o2} = \frac{1}{g_m} \parallel r_o \parallel \frac{1}{G_{E2}} \parallel r_\pi
+\end{align*}
+
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/InZ2.png}
+        \caption{Input impedence of 2nd sub-circuit}
+\label{fig:venvelope}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/OutZ2.png}
+\label{fig:EnvRec}
+\caption{Output impedence of 2nd sub-circuit}
+     \end{subfigure}
+     \hfill
+        \label{fig:EnvelopeOut}
+\end{figure}
+
+Now, the input impedence lowers for higher frequencies once again due to the parallel of resistence and capacitor in the incremental model. This will ultimatly lower the gain of the whole circuit as the voltage which is actually applied in much less than the one comming out of the gain phase. Nontheless, for range of frequency up to 10	kHz, the input impedence matches well witht the ouput of the gain phase. As for the output impedence of the second sub-circuit, the value is overall low as one would except, which is very adequate to connect to the 8 $\Omega$ load. Mind you, this value was calculted only with the second sub-circuit, as if there were no impedence from the first.
+
+
+For the whole circuit we computed also computed the gain and the output impedence which by KVL are given by \footnote{Here, we consider the $g_m \, ,r_\pi \, ,r_o$ regarding the pnp transistor}
+
+\begin{align*}
+\text{Gain} &= \frac{ \frac{1}{r_\pi + Z_{o1}} + \frac{g_mr_\pi}{r_\pi + Z_{o1}} } {\frac{1}{r_\pi + Z_{o1}} + G_{E2} + \frac{1}{r_o} + \frac{g_mr_\pi}{r_\pi + Z_{o1}}} A_1\\
+Z_{out} &= \frac{1}{\frac{1}{r_o} + \frac{g_mr_\pi}{r_\pi + Z_{o1}} + G_{E2} + \frac{1}{r_\pi + Z_{o1}}}
+\end{align*}
+
+
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/Gains.png}
+        \caption{Gain of the circuit}
+\label{fig:venvelope}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+\includegraphics[width=\textwidth]{../mat/OutZFull.png}
+\label{fig:EnvRec}
+\caption{Output impedence of the whole circuit }
+     \end{subfigure}
+     \hfill
+        \label{fig:EnvelopeOut}
+\end{figure}
+
+From the plots, one can observe that, as expected, the gain of the second circuit is approximatly one and the gain of the first is much higher. Moreover, there is significant difference between calculating the overall gain as the product of the two intermidiate gains, rather than by considering the whole circuit connecte. Finally, it should be noted that the gain strart to diminuish at approximatly the same point as the impedence difference between the first and second circuit become exarcebated, highlighting the aformention problems of non-mathcing impedence at the connection of the two sub-circuits.

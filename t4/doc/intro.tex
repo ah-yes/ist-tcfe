@@ -1,0 +1,40 @@
+\section{Introduction}
+\label{sec:introduction}
+
+% state the learning objective
+
+In this assignment we present and analyse a possible design for an audio amplifier circuit, with an input audio of maximum 10mV and supply voltage VCC at 12V. Thus, we used a Gain Stage composed by commom emitter amplifier and an output stage composed by common collector amplifier.
+Furthermore, a cost/effectiveness analysis was also done, with set prices for the transistors (0.1 monetary unit per transistor), resistors (1 monetary unit per kOhm) and capacitors(1 monetary unit per micro-Farad).
+
+We used the following components 
+
+\begin{figure}[h] \centering
+\includegraphics[scale=0.5]{lab04.pdf}
+\caption{Audio amplifier circuit.}
+\label{fig:rc}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    $C_{coupling}$ & 1$\mu F$ \\ \hline
+    $R_{B1}$ & 80k$\Omega$ \\ \hline
+    $R_{B2}$ & 10k$\Omega$ \\ \hline
+    $R_{C2}$ & 0.9k$\Omega$ \\ \hline
+    $R_{E1}$ & 70$\Omega$ \\ \hline
+    $C_{E1}$ & 80$\mu F$ \\ \hline
+    $R_{out}$ & 80$\Omega$ \\ \hline
+    $C_{out}$ & 120$\mu F$ \\ \hline  
+  \end{tabular}
+  \caption{Values for the components used}
+  \label{tab:op}
+\end{table}
+
+leading to a cost of 165.17 MU. 
+
+
+We then began by analysing the circuit by means of simulation with ngspice and a theoreti-
+cal approach using Octave. Afterwards the results from both methods were compared followed
+by a discussion of the efficiency of the speaker.
