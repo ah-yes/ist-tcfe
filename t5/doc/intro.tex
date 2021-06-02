@@ -1,0 +1,36 @@
+\section{Introduction}
+\label{sec:introduction}
+
+% state the learning objective
+
+In this assignment we present and analyse a possible design for an active bandpass filter, by using one 741 OP-AMP with $\pm 5$V $\pm V_{CC}$ , in an architecture with non-invertering feedback. Associations of resistors and capactiors were also used.  
+
+Furthermore, a cost/effectiveness analysis was also done, with set prices for the transistors (0.1 monetary unit per transistor), resistors (1 monetary unit per kOhm) and capacitors(1 monetary unit per micro-Farad). COST OF OP-AMP
+
+We used the following components 
+\begin{figure}[h] \centering
+\includegraphics[scale=0.5]{lab05.pdf}
+\caption{Audio amplifier circuit.}
+\label{fig:rc}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    $C_{1}$ & 1$\mu F$ \\ \hline
+    $R_{1}$ & 80k$\Omega$ \\ \hline
+    $R_{2}$ & 10k$\Omega$ \\ \hline
+    $R_{3}$ & 0.9k$\Omega$ \\ \hline
+    $R_{4}$ & 70$\Omega$ \\ \hline
+    $C_{2}$ & 80$\mu F$ \\ \hline
+  \end{tabular}
+  \caption{Values for the components used}
+  \label{tab:op}
+\end{table}
+
+The values are presented as parallel or series of individual components as the available material for this circuit was specified, and this series and parallel associations were ommited from the circuit scheme for the sake of simplicity. 
+This architecture has a cost of XXXX MU (we did not consider the cost of the OP-AMP). 
+
+We then began by analysing the circuit by means of simulation with ngspice and a theoretical approach using Octave. Afterwards the results from both methods were compared followed by a discussion of the efficiency of the speaker.

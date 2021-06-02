@@ -1,0 +1,35 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+
+For the theoretical analysis, we considerer an ideal operational amplifier, i.e., wiht infinite gain, infinite input impedence and zero output impedence. We also assume the OP-AMP is not saturated. In this conditions, the voltage at the minus and plus terminal are the same and no current flows into either.
+
+At the plus terminal we have a simple voltage divider, thus 
+\begin{equation}
+\frac{\tilde{V_{+}}}{\tilde{V_{in}}} = \frac{j\omega C_1R_1}{R_1j\omega C_1 + 1}
+\end{equation}
+
+By applying Kirchoff's laws we arrive at an equation for the voltage at the output, 
+\begin{equation}
+\frac{\tilde{V_{out}}}{\tilde{V_{o}}} = \bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}\frac{1}{R_2j\omega C_2 + 1}
+\end{equation}
+
+Hence, combining the two we get 
+\begin{equation}
+\text{Gain} = \frac{\tilde{V_{out}}}{\tilde{V_{in}}} =\frac{j\omega C_1R_1}{R_1j\omega C_1 + 1}\bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}\frac{1}{R_2j\omega C_2 + 1}
+\label{eq:Gain}
+\end{equation}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{../mat/Gain.png}
+\caption{Frequency response of the circuit}
+\hfill
+\label{fig:venvelope}
+\end{figure}
+
+In particular for $f = 1.004690e+03\text{Hz}$\footnote{This frequency corresponds to the central obtained by the simulation} we have 
+%%%%Insert output for op from octave
+\input{../mat/ResultsF.tex}
+
+
+
