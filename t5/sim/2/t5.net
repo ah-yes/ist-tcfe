@@ -118,6 +118,7 @@ echo  "op_END"
 
 *output impedance
 hardcopy outputimpedance.ps abs(v(out2))
+echo outputimpedance_FIG
 *need a different setup to measure output impedance
 
 .endc 

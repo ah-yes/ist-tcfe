@@ -100,6 +100,7 @@ ac dec 10 1 100MEG
 plot vdb(out)
 plot vp(out)
 hardcopy vo1f.ps vdb(out2)
+echo vo1f_FIG
 hardcopy sanitycheck.ps v(in)
 hardcopy sanitycheck2.ps v(out2)
 
@@ -127,6 +128,7 @@ echo  "op_END"
 *input impedance in kohm
 print v(in)[40]/R1[i]/1000
 hardcopy inputimpedance.ps abs(v(in)/vin#branch)
+echo inputimpedance_FIG
 *need a different setup to measure output impedance
 
 .endc 

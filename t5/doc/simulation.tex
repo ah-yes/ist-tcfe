@@ -20,13 +20,21 @@ We ran a simulation of the circuit using {\it Ngspice} with the provided OP-AMP 
         \label{fig:two graphs}
 \end{figure}
 
+
 \begin{figure}[!htb]
      \begin{subfigure}[b]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{../sim/1/vo1f.pdf}
-        \caption{Output voltage gain of the ciruit.}
-   	\hfill
-        \label{fig:Gain}
+         \centering
+         \includegraphics[width=\textwidth]{../sim/1/vo1f.pdf}
+         \caption{\textit{Ngspice's} output voltage gain}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.65\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../mat/Gain.png}
+         \caption{Theoretical analysis' output voltage gain}
+         \label{fig:five over x}
+     \end{subfigure}
+     \label{fig:two graphs}
 \end{figure}
 
 The input impendence is very high for low frequencies, as expected, and seems to diminuish progressivly for higher frequencies, once again as expected given the frequency dependent behaviour of the capacitor. We also see that for $f \to \infty $ the input impedence appears to vanish, which is a clear deviation from the theoretical model, which considers it to be infinite for all frequencies. 
