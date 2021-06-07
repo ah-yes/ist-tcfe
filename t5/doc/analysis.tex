@@ -10,12 +10,12 @@ At the plus terminal we have a simple voltage divider, thus
 
 By applying Kirchoff's laws we arrive at an equation for the voltage at the output, 
 \begin{equation}
-\frac{\tilde{V_{out}}}{\tilde{V_{+}}} = \bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}
+\frac{\tilde{V_{out}}}{\tilde{V_{o}}} = \bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}\frac{1}{R_2j\omega C_2 + 1}
 \end{equation}
 
-Hence, combining the two with  get 
+Hence, combining the two we get 
 \begin{equation}
-\text{Gain} = \frac{\tilde{V_{out}}}{\tilde{V_{in}}} =\bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}\frac{j\omega C_1R_1}{R_1j\omega C_1 + 1}
+\text{Gain} = \frac{\tilde{V_{out}}}{\tilde{V_{in}}} =\frac{j\omega C_1R_1}{R_1j\omega C_1 + 1}\bigg(1+\frac{R_4}{R_3}\bigg)\frac{1}{R_2j\omega C_2 + 1}\frac{1}{R_2j\omega C_2 + 1}
 \label{eq:Gain}
 \end{equation}
 

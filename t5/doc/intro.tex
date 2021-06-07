@@ -5,7 +5,7 @@
 
 In this assignment we present and analyse a possible design for an active bandpass filter, by using one 741 OP-AMP with $\pm 5$V $\pm V_{CC}$ , in an architecture with non-invertering feedback. Associations of resistors and capactiors were also used.  
 
-Furthermore, a cost/effectiveness analysis was also done, with set prices for the transistors (0.1 monetary unit per transistor), resistors (1 monetary unit per kOhm) and capacitors(1 monetary unit per micro-Farad). 
+Furthermore, a cost/effectiveness analysis was also done, with set prices for the transistors (0.1 monetary unit per transistor), resistors (1 monetary unit per kOhm) and capacitors(1 monetary unit per micro-Farad). COST OF OP-AMP
 
 We used the following components 
 \begin{figure}[h] \centering
@@ -18,19 +18,19 @@ We used the following components
   \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf Name} & {\bf Value } \\ \hline
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
     $C_{1}$ & 220$nF$ \\ \hline
     $R_{1}$ & 1k$\Omega$ \\ \hline
     $R_{2}$ & 1k$\Omega$ \\ \hline
     $R_{3}$ & 1k$\Omega$ \\ \hline
     $R_{4}$ & 100k$\Omega$ \\ \hline
-    $C_{2}$ & 220$nF$ in series with 220 $nF$ \\ \hline
+    $C_{2}$ & 110$nF$ \\ \hline
   \end{tabular}
   \caption{Values for the components used}
   \label{tab:op}
 \end{table}
 
 The values are presented as parallel or series of individual components as the available material for this circuit was specified, and this series and parallel associations were ommited from the circuit scheme for the sake of simplicity. 
-This architecture has a cost of 103.66 MU (we did not consider the cost of the OP-AMP). 
+This architecture has a cost of 13426.45204 MU (we did not consider the cost of the OP-AMP). 
 
 We then began by analysing the circuit by means of simulation with ngspice and a theoretical approach using Octave. Afterwards the results from both methods were compared followed by a discussion of the efficiency of the speaker.

@@ -106,30 +106,39 @@ hardcopy sanitycheck2.ps v(out2)
 
 
 *Central Frequency
+meas ac Gain1000 FIND v(out2) AT=1000
+let GainDeviation='abs(Gain1000-40)'
+print GainDeviation
+
+
+
 meas ac ymax MAX vdb(out2) from=0 to=100MEG
 let x='ymax-3'
 meas ac xeval1 WHEN vdb(out2)=x
 meas ac xeval2 WHEN vdb(out2)=x Fall=LAST
+let CentralFrequency='sqrt((xeval1*xeval2))'
+print CentralFrequency
+let CentralFrequencyDeviation='abs(CentralFrequency-1000)'
+print CentralFrequencyDeviation
 
 
+meas ac Gain Find vdb(out2) AT=CentralFrequency
+meas ac yes2 Find vin#branch AT=CentralFrequency
+let inputimpedance='abs(1/yes2)'
 
-let f='sqrt((xeval1*xeval2))'
-print f
-meas ac Gain Find vdb(out2) AT=f
-meas ac yes2 Find vin#branch AT=f
-let z='abs(1/yes2)'
 
-echo  "op_TAB"
-print f
-print Gain
-print z
-echo  "op_END"
 
 *input impedance in kohm
 print v(in)[40]/R1[i]/1000
 hardcopy inputimpedance.ps abs(v(in)/vin#branch)
 echo inputimpedance_FIG
 *need a different setup to measure output impedance
-
+echo  "op_TAB"
+print Gain1000
+print GainDeviation
+print CentralFrequency
+print CentralFrequencyDeviation
+print inputimpedance
+echo  "op_END"
 .endc 
 
